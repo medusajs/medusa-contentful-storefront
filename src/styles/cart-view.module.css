@@ -166,8 +166,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--logo-color-900);
-  color: white;
+  background: var(--brand-green);
+  color: var(--brand-deep-blue);
   border-radius: 8px;
   transition: background 0.2s ease-in;
   font-weight: 500;
@@ -176,7 +176,8 @@
 }
 
 .checkoutbtn:hover {
-  background: var(--logo-color-1000);
+  color: var(--brand-cool-grey);
+  background: var(--brand-deep-blue);
 }
 
 @media (max-width: 876px) {

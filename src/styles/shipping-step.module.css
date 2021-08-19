@@ -55,7 +55,7 @@
   align-self: center;
   display: inline-flex;
   align-items: center;
-  background: var(--logo-color-900);
+  background: var(--brand-deep-blue);
   color: white;
   border-radius: 8px;
   transition: background 0.2s ease-in;
@@ -64,7 +64,8 @@
 }
 
 .nextBtn:hover {
-  background: var(--logo-color-1000);
+  background: var(--brand-green);
+  color: var(--brand-deep-blue);
 }
 
 .error {

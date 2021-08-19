@@ -30,18 +30,16 @@
   border: none;
   background: lightgrey;
   border-radius: 2px;
-  height: 38px;
-  width: 38px;
   margin-right: 0.5rem;
   transition: all 0.2s ease-in;
 }
 
 .sizebtn:hover {
-  filter: brightness(0.9);
+  background: var(--ui-100);
 }
 
 .selected {
-  background: var(--logo-color-900);
+  background: var(--brand-deep-blue);
   color: white;
 }
 
@@ -90,7 +88,7 @@
   align-self: center;
   display: inline-flex;
   align-items: center;
-  background: var(--logo-color-900);
+  background: var(--brand-deep-blue);
   color: white;
   border-radius: 4px;
   transition: background 0.2s ease-in;
@@ -103,7 +101,8 @@
 }
 
 .addbtn:hover {
-  background: var(--logo-color-1000);
+  background: var(--brand-green);
+  color: var(--brand-deep-blue);
 }
 
 .tabs {

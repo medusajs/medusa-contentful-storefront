@@ -1,10 +1,18 @@
 :root {
   --brand-green: #56FBB1;
   --brand-deep-blue: #0A3149;
+  --brand-cool-grey: #EEF0F5;
+
+  --ui-100: #89959C;
+  --ui-75: #D9DFE8;
+  --ui-50: #EEF0F5;
+  --ui-25: #F7F7FA;
+
   --logo-color-1000: #30363d;
   --logo-color-900: #454b54;
   --logo-color-400: #a3b1c7;
   --logo-color-100: #454b5411;
+
   --bg: #f7f9f9;
 
   /* Font sizes */

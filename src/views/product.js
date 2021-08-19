@@ -90,6 +90,8 @@ const Product = ({ product }) => {
       <figure className={styles.image}>
         <div className={styles.placeholder}>
           <GatsbyImage
+            style={{ maxHeight: "500px" }}
+            imgStyle={{ margin: "0 auto", maxHeight: "500px", width: "auto" }}
             alt={product.title}
             image={getImage(product.thumbnail)}
           />
