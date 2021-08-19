@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import DisplayContext from "../../context/display-context";
 import StoreContext from "../../context/store-context";
 import * as styles from "../../styles/checkout-step.module.css";
+import Link from "../link";
 import CheckoutSummary from "./checkout-summary";
 import InformationStep from "./information-step";
 import PaymentStep from "./payment-step";
@@ -9,12 +10,8 @@ import ShippingStep from "./shipping-step";
 import StepOverview from "./step-overview";
 
 const CheckoutStep = () => {
-  const {
-    checkoutStep,
-    orderSummary,
-    updateCheckoutStep,
-    updateOrderSummaryDisplay,
-  } = useContext(DisplayContext);
+  const { checkoutStep, updateCheckoutStep, updateOrderSummaryDisplay } =
+    useContext(DisplayContext);
   const { cart, updateAddress, setShippingMethod } = useContext(StoreContext);
 
   const [isProcessingInfo, setIsProcessingInfo] = useState(false);
@@ -75,6 +72,9 @@ const CheckoutStep = () => {
   return (
     <div className={styles.container}>
       <div className={styles.steps}>
+        <Link to={"/"} className={styles.backBtn}>
+          ← Back to store
+        </Link>
         <div className={styles.breadcrumbs}>
           <p className={checkoutStep === 1 ? styles.activeStep : ""}>
             Information

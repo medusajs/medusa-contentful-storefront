@@ -4,17 +4,15 @@ import { formatPrice } from "../../utils/helper-functions";
 
 const ShippingMethod = ({ handleOption, option, chosen }) => {
   return (
-    <div
+    <button
       className={`${styles.shippingOption} ${
         option.id === chosen?.id ? styles.chosen : ""
       }`}
       onClick={() => handleOption(option)}
-      role="button"
-      tabIndex="0"
     >
       <p>{option.name}</p>
       <p>{formatPrice(option.amount, "EUR")}</p>
-    </div>
+    </button>
   );
 };
 

@@ -26,7 +26,7 @@ const Payment = () => {
         createCart();
       });
     }
-  }, []);
+  }, [cart, completeCart, createCart]);
 
   return !order ? (
     <div style={style}>

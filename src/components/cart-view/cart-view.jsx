@@ -12,7 +12,7 @@ const CartView = () => {
     useContext(StoreContext);
 
   return (
-    <div className={`${styles.container} ${cartView ? styles.active : null}`}>
+    <div className={cartView ? styles.active : styles.cartContainer}>
       <div className={styles.top}>
         <p>Bag</p>
         <p>
@@ -41,7 +41,7 @@ const CartView = () => {
           .map((i) => {
             return (
               <div key={i.id} className={styles.product}>
-                <figure onClick={() => updateCartViewDisplay()}>
+                <figure>
                   <Link to={`/product/${i.variant.product.id}`}>
                     {/* Replace with a product thumbnail/image */}
                     <div className={styles.placeholder} />

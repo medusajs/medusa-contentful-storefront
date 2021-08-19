@@ -1,3 +1,5 @@
+import zeroDecimalCurrencies from "./zero-decimal-currencies";
+
 export const quantity = (item) => {
   return item.quantity;
 };
@@ -7,6 +9,10 @@ export const sum = (prev, next) => {
 };
 
 export const formatPrice = (price, currency) => {
+  if (zeroDecimalCurrencies.includes(currency.toLowerCase())) {
+    return `${price} ${currency.toUpperCase()}`;
+  }
+
   return `${(price / 100).toFixed(2)} ${currency.toUpperCase()}`;
 };
 
@@ -16,7 +22,7 @@ export const getSlug = (path) => {
 };
 
 export const resetOptions = (product) => {
-  const variantId = product.variants.slice(0).reverse()[0].id;
+  const variantId = product.variants.slice(0).reverse()[0].medusaId;
   const size = product.variants.slice(0).reverse()[0].title;
   return {
     variantId: variantId,

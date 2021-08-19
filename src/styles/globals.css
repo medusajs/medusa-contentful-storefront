@@ -1,4 +1,6 @@
 :root {
+  --brand-green: #56FBB1;
+  --brand-deep-blue: #0A3149;
   --logo-color-1000: #30363d;
   --logo-color-900: #454b54;
   --logo-color-400: #a3b1c7;
@@ -18,6 +20,10 @@
 
   /* Nav */
   --nav-height: 68px;
+
+  --z-index-high: 100;
+  --z-index-mid: 75;
+  --z-index-low: 50;
 }
 
 * {
@@ -28,8 +34,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: ES Rebond Grotesque, Helvetica Neue, sans-serif;
 }
 
 a {

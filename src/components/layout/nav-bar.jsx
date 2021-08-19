@@ -1,5 +1,7 @@
-import { Link } from "gatsby";
 import React, { useContext } from "react";
+import { useStaticQuery, graphql } from "gatsby";
+
+import Link from "../link";
 import DisplayContext from "../../context/display-context";
 import StoreContext from "../../context/store-context";
 import { quantity, sum } from "../../utils/helper-functions";
@@ -10,11 +12,45 @@ const NavBar = ({ isCheckout }) => {
   const { updateCartViewDisplay } = useContext(DisplayContext);
   const { cart } = useContext(StoreContext);
 
+  const data = useStaticQuery(graphql`
+    query HeaderQuery {
+      logo: contentfulAsset(title: { eq: "Logo" }) {
+        id
+        file {
+          url
+        }
+      }
+      nav: contentfulNavigationMenu(title: { eq: "Main" }) {
+        items {
+          id
+          title
+          link {
+            linkTo
+            reference {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+
   return (
     <div className={styles.container}>
       <Link to="/">
-        <h1 className={styles.logo}>medusa</h1>
+        <img alt="Medusa Logo" src={data.logo.file.url} />
       </Link>
+      {!isCheckout && (
+        <div className={styles.mainNav}>
+          {data.nav.items.map((item) => {
+            return (
+              <Link key={item.id} className={styles.navItem} link={item.link}>
+                {item.title}
+              </Link>
+            );
+          })}
+        </div>
+      )}
       {!isCheckout ? (
         <button className={styles.btn} onClick={() => updateCartViewDisplay()}>
           <BiShoppingBag />{" "}
