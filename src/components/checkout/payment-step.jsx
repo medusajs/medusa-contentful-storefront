@@ -12,7 +12,7 @@ const PaymentStep = () => {
 
   useEffect(() => {
     createPaymentSession();
-  }, [createPaymentSession]);
+  }, []);
 
   const handlePayment = async () => {
     await setPaymentSession("manual").then(() => {
