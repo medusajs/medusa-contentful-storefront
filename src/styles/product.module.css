@@ -2,6 +2,12 @@
   width: 100%;
   min-height: 100vh;
   display: flex;
+  flex-wrap: wrap;
+}
+
+.controls {
+  display: flex;
+  width: 100%;
 }
 
 .image {
@@ -116,6 +122,12 @@
   padding: 0.5rem 0;
   font-size: var(--fz-m);
   border-bottom: 1px solid var(--logo-color-400);
+}
+
+.content-modules {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 @media (max-width: 876px) {

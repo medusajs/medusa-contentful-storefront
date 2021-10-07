@@ -87,82 +87,84 @@ const Product = ({ product }) => {
         title={product.title}
         description={product.description?.description}
       />
-      <figure className={styles.image}>
-        <div className={styles.placeholder}>
-          <GatsbyImage
-            style={{ maxHeight: "500px" }}
-            imgStyle={{ margin: "0 auto", maxHeight: "500px", width: "auto" }}
-            alt={product.title}
-            image={getImage(product.thumbnail)}
-          />
-        </div>
-      </figure>
-      <div className={styles.info}>
-        <span />
-        <div>
-          <div className="title">
-            <h1>{product.title}</h1>
+      <div className={styles.controls}>
+        <figure className={styles.image}>
+          <div className={styles.placeholder}>
+            <GatsbyImage
+              style={{ maxHeight: "500px" }}
+              imgStyle={{ margin: "0 auto", maxHeight: "500px", width: "auto" }}
+              alt={product.title}
+              image={getImage(product.thumbnail)}
+            />
           </div>
-          <p className="price">
-            {renderPrice(
-              product.variants.find((v) => v.medusaId === options.variantId)
-            )}
-          </p>
-          <div className={styles.selection}>
-            <p>Select Size</p>
-            <div className="selectors">
-              {product.variants
-                .slice(0)
-                .reverse()
-                .map((v) => {
-                  return (
-                    <button
-                      key={v.medusaId}
-                      className={`${styles.sizebtn} ${
-                        v.title === options.size ? styles.selected : null
-                      }`}
-                      onClick={() =>
-                        setOptions({
-                          variantId: v.medusaId,
-                          quantity: options.quantity,
-                          size: v.title,
-                        })
-                      }
-                    >
-                      {v.title}
-                    </button>
-                  )
-                })}
+        </figure>
+        <div className={styles.info}>
+          <span />
+          <div>
+            <div className="title">
+              <h1>{product.title}</h1>
             </div>
-          </div>
-          <div className={styles.selection}>
-            <p>Select Quantity</p>
-            <div className={styles.qty}>
-              <button
-                className={styles.qtybtn}
-                onClick={() => handleQtyChange("dec")}
-              >
-                -
-              </button>
-              <span className={styles.ticker}>{options.quantity}</span>
-              <button
-                className={styles.qtybtn}
-                onClick={() => handleQtyChange("inc")}
-              >
-                +
-              </button>
+            <p className="price">
+              {renderPrice(
+                product.variants.find((v) => v.medusaId === options.variantId)
+              )}
+            </p>
+            <div className={styles.selection}>
+              <p>Select Size</p>
+              <div className="selectors">
+                {product.variants
+                  .slice(0)
+                  .reverse()
+                  .map((v) => {
+                    return (
+                      <button
+                        key={v.medusaId}
+                        className={`${styles.sizebtn} ${
+                          v.title === options.size ? styles.selected : null
+                        }`}
+                        onClick={() =>
+                          setOptions({
+                            variantId: v.medusaId,
+                            quantity: options.quantity,
+                            size: v.title,
+                          })
+                        }
+                      >
+                        {v.title}
+                      </button>
+                    )
+                  })}
+              </div>
             </div>
-          </div>
-          <button className={styles.addbtn} onClick={() => handleAddToBag()}>
-            <span>Add to bag</span>
-            <BiShoppingBag />
-          </button>
-          <div className={styles.tabs}>
-            <div className="tab-titles">
-              <button className={styles.tabtitle}>Product Description</button>
+            <div className={styles.selection}>
+              <p>Select Quantity</p>
+              <div className={styles.qty}>
+                <button
+                  className={styles.qtybtn}
+                  onClick={() => handleQtyChange("dec")}
+                >
+                  -
+                </button>
+                <span className={styles.ticker}>{options.quantity}</span>
+                <button
+                  className={styles.qtybtn}
+                  onClick={() => handleQtyChange("inc")}
+                >
+                  +
+                </button>
+              </div>
             </div>
-            <div className="tab-content">
-              <p>{product.description?.description}</p>
+            <button className={styles.addbtn} onClick={() => handleAddToBag()}>
+              <span>Add to bag</span>
+              <BiShoppingBag />
+            </button>
+            <div className={styles.tabs}>
+              <div className="tab-titles">
+                <button className={styles.tabtitle}>Product Description</button>
+              </div>
+              <div className="tab-content">
+                <p>{product.description?.description}</p>
+              </div>
             </div>
           </div>
         </div>
