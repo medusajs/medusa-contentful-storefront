@@ -1,6 +1,6 @@
-import React from "react";
-import * as styles from "../../styles/shipping-method.module.css";
-import { formatPrice } from "../../utils/helper-functions";
+import React from "react"
+import * as styles from "../../styles/shipping-method.module.css"
+import { formatPrice } from "../../utils/helper-functions"
 
 const ShippingMethod = ({ handleOption, option, chosen }) => {
   return (
@@ -13,7 +13,7 @@ const ShippingMethod = ({ handleOption, option, chosen }) => {
       <p>{option.name}</p>
       <p>{formatPrice(option.amount, "EUR")}</p>
     </button>
-  );
-};
+  )
+}
 
-export default ShippingMethod;
+export default ShippingMethod

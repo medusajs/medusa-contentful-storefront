@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import DisplayContext from "../../context/display-context";
-import StoreContext from "../../context/store-context";
-import * as styles from "../../styles/step-overview.module.css";
+import React, { useContext } from "react"
+import DisplayContext from "../../context/display-context"
+import StoreContext from "../../context/store-context"
+import * as styles from "../../styles/step-overview.module.css"
 
 const StepOverview = () => {
-  const { cart } = useContext(StoreContext);
-  const { checkoutStep, updateCheckoutStep } = useContext(DisplayContext);
+  const { cart } = useContext(StoreContext)
+  const { checkoutStep, updateCheckoutStep } = useContext(DisplayContext)
   return (
     <div>
       <h2>Steps</h2>
@@ -55,7 +55,7 @@ const StepOverview = () => {
         ) : null}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default StepOverview;
+export default StepOverview

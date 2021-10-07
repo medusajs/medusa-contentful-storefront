@@ -18,4 +18,3 @@ const zeroDecimalCurrencies = [
 ]
 
 export default zeroDecimalCurrencies
-

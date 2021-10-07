@@ -1,10 +1,10 @@
-import React from "react";
-import { graphql } from "gatsby";
+import React from "react"
+import { graphql } from "gatsby"
 
-import SEO from "../components/seo";
-import Hero from "../components/hero/hero";
-import TileSection from "../components/tile-section/tile-section";
-import * as styles from "../styles/home.module.css";
+import SEO from "../components/seo"
+import Hero from "../components/hero/hero"
+import TileSection from "../components/tile-section/tile-section"
+import * as styles from "../styles/home.module.css"
 
 // markup
 const Page = ({ data }) => {
@@ -18,17 +18,17 @@ const Page = ({ data }) => {
         {data.page.contentModules.map((cm) => {
           switch (cm.internal.type) {
             case "ContentfulHero":
-              return <Hero key={cm.id} data={cm} />;
+              return <Hero key={cm.id} data={cm} />
             case "ContentfulTileSection":
-              return <TileSection key={cm.id} data={cm} />;
+              return <TileSection key={cm.id} data={cm} />
             default:
-              return null;
+              return null
           }
         })}
       </main>
     </div>
-  );
-};
+  )
+}
 
 export const query = graphql`
   query ($id: String!) {
@@ -95,6 +95,6 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
-export default Page;
+export default Page

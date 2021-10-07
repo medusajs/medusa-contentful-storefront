@@ -1,5 +1,5 @@
-import React, { useReducer, useEffect, useRef } from "react";
-import { createClient } from "../utils/client";
+import React, { useReducer, useEffect, useRef } from "react"
+import { createClient } from "../utils/client"
 
 export const defaultStoreContext = {
   adding: false,
@@ -25,10 +25,10 @@ export const defaultStoreContext = {
   completeCart: async () => {},
   retrieveOrder: async () => {},
   dispatch: () => {},
-};
+}
 
-const StoreContext = React.createContext(defaultStoreContext);
-export default StoreContext;
+const StoreContext = React.createContext(defaultStoreContext)
+export default StoreContext
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -37,64 +37,64 @@ const reducer = (state, action) => {
         ...state,
         cart: action.payload,
         currencyCode: action.payload.region.currency_code,
-      };
+      }
     case "setOrder":
       return {
         ...state,
         order: action.payload,
-      };
+      }
     case "setProducts":
       return {
         ...state,
         products: action.payload,
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-const client = createClient();
+const client = createClient()
 
 export const StoreProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, defaultStoreContext);
-  const stateCartId = useRef();
+  const [state, dispatch] = useReducer(reducer, defaultStoreContext)
+  const stateCartId = useRef()
 
   useEffect(() => {
-    stateCartId.current = state.cart.id;
-  }, [state.cart]);
+    stateCartId.current = state.cart.id
+  }, [state.cart])
 
   useEffect(() => {
-    let cartId;
+    let cartId
     if (localStorage) {
-      cartId = localStorage.getItem("cart_id");
+      cartId = localStorage.getItem("cart_id")
     }
 
     if (cartId) {
       client.carts.retrieve(cartId).then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart });
-      });
+        dispatch({ type: "setCart", payload: data.cart })
+      })
     } else {
       client.carts.create(cartId).then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart });
+        dispatch({ type: "setCart", payload: data.cart })
         if (localStorage) {
-          localStorage.setItem("cart_id", data.cart.id);
+          localStorage.setItem("cart_id", data.cart.id)
         }
-      });
+      })
     }
 
     client.products.list().then(({ data }) => {
-      dispatch({ type: "setProducts", payload: data.products });
-    });
-  }, []);
+      dispatch({ type: "setProducts", payload: data.products })
+    })
+  }, [])
 
   const createCart = () => {
     if (localStorage) {
-      localStorage.removeItem("cart_id");
+      localStorage.removeItem("cart_id")
     }
     client.carts.create().then(({ data }) => {
-      dispatch({ type: "setCart", payload: data.cart });
-    });
-  };
+      dispatch({ type: "setCart", payload: data.cart })
+    })
+  }
 
   const setPaymentSession = async (provider) => {
     client.carts
@@ -102,10 +102,10 @@ export const StoreProvider = ({ children }) => {
         provider_id: provider,
       })
       .then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart });
-        return data;
-      });
-  };
+        dispatch({ type: "setCart", payload: data.cart })
+        return data
+      })
+  }
 
   const addVariantToCart = async ({ variantId, quantity }) => {
     client.carts.lineItems
@@ -114,35 +114,35 @@ export const StoreProvider = ({ children }) => {
         quantity: quantity,
       })
       .then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart });
-      });
-  };
+        dispatch({ type: "setCart", payload: data.cart })
+      })
+  }
 
   const removeLineItem = async (lineId) => {
     client.carts.lineItems.delete(state.cart.id, lineId).then(({ data }) => {
-      dispatch({ type: "setCart", payload: data.cart });
-    });
-  };
+      dispatch({ type: "setCart", payload: data.cart })
+    })
+  }
 
   const updateLineItem = async ({ lineId, quantity }) => {
     client.carts.lineItems
       .update(state.cart.id, lineId, { quantity: quantity })
       .then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart });
-      });
-  };
+        dispatch({ type: "setCart", payload: data.cart })
+      })
+  }
 
   const getShippingOptions = async () => {
     const data = await client.shippingOptions
       .list(state.cart.id)
-      .then(({ data }) => data);
+      .then(({ data }) => data)
 
     if (data) {
-      return data.shipping_options;
+      return data.shipping_options
     } else {
-      return undefined;
+      return undefined
     }
-  };
+  }
 
   const setShippingMethod = async (id) => {
     return await client.carts
@@ -150,41 +150,41 @@ export const StoreProvider = ({ children }) => {
         option_id: id,
       })
       .then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart });
-        return data;
-      });
-  };
+        dispatch({ type: "setCart", payload: data.cart })
+        return data
+      })
+  }
 
   const createPaymentSession = async () => {
     return await client.carts
       .createPaymentSessions(state.cart.id)
       .then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart });
-        return data;
-      });
-  };
+        dispatch({ type: "setCart", payload: data.cart })
+        return data
+      })
+  }
 
   const completeCart = async () => {
     const data = await client.carts
       .complete(state.cart.id)
-      .then(({ data }) => data);
+      .then(({ data }) => data)
 
     if (data) {
-      return data.data;
+      return data.data
     } else {
-      return undefined;
+      return undefined
     }
-  };
+  }
 
   const retrieveOrder = async (orderId) => {
-    const data = await client.orders.retrieve(orderId).then(({ data }) => data);
+    const data = await client.orders.retrieve(orderId).then(({ data }) => data)
 
     if (data) {
-      return data.order;
+      return data.order
     } else {
-      return undefined;
+      return undefined
     }
-  };
+  }
 
   const updateAddress = (address, email) => {
     client.carts
@@ -194,9 +194,9 @@ export const StoreProvider = ({ children }) => {
         email: email,
       })
       .then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart });
-      });
-  };
+        dispatch({ type: "setCart", payload: data.cart })
+      })
+  }
 
   return (
     <StoreContext.Provider
@@ -218,5 +218,5 @@ export const StoreProvider = ({ children }) => {
     >
       {children}
     </StoreContext.Provider>
-  );
-};
+  )
+}

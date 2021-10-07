@@ -1,7 +1,7 @@
-import React from "react";
-import { Field } from "formik";
-import * as styles from "../../styles/input-field.module.css";
-import { MdError } from "react-icons/md";
+import React from "react"
+import { Field } from "formik"
+import * as styles from "../../styles/input-field.module.css"
+import { MdError } from "react-icons/md"
 
 const SelectField = ({ id, error, errorMsg, type, disabled, options }) => {
   return options ? (
@@ -29,7 +29,7 @@ const SelectField = ({ id, error, errorMsg, type, disabled, options }) => {
               <option key={o.id} value={o.iso_2}>
                 {o.display_name}
               </option>
-            );
+            )
           })}
         </Field>
         {error && <MdError className={styles.erroricon} />}
@@ -37,7 +37,7 @@ const SelectField = ({ id, error, errorMsg, type, disabled, options }) => {
     </div>
   ) : (
     <div className={styles.fetching} />
-  );
-};
+  )
+}
 
-export default SelectField;
+export default SelectField

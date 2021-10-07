@@ -1,15 +1,14 @@
-import React, { useContext } from "react";
-import { PuffLoader } from "react-spinners";
-import * as styles from "../../styles/checkout-summary.module.css";
-import * as itemStyles from "../../styles/cart-view.module.css";
-import { Link } from "gatsby";
-import { formatPrice } from "../../utils/helper-functions";
-import { sum, quantity } from "../../utils/helper-functions";
-import DisplayContext from "../../context/display-context";
+import React, { useContext } from "react"
+import { PuffLoader } from "react-spinners"
+import * as styles from "../../styles/checkout-summary.module.css"
+import * as itemStyles from "../../styles/cart-view.module.css"
+import { Link } from "gatsby"
+import { formatPrice } from "../../utils/helper-functions"
+import { sum, quantity } from "../../utils/helper-functions"
+import DisplayContext from "../../context/display-context"
 
 const CheckoutSummary = ({ cart }) => {
-  const { orderSummary, updateOrderSummaryDisplay } =
-    useContext(DisplayContext);
+  const { orderSummary, updateOrderSummaryDisplay } = useContext(DisplayContext)
   return cart ? (
     <div className={`${styles.container} ${orderSummary ? styles.active : ""}`}>
       <div className={itemStyles.top}>
@@ -33,11 +32,11 @@ const CheckoutSummary = ({ cart }) => {
         {cart.items
           .sort((a, b) => {
             const createdAtA = new Date(a.created_at),
-              createdAtB = new Date(b.created_at);
+              createdAtB = new Date(b.created_at)
 
-            if (createdAtA < createdAtB) return -1;
-            if (createdAtA > createdAtB) return 1;
-            return 0;
+            if (createdAtA < createdAtB) return -1
+            if (createdAtA > createdAtB) return 1
+            return 0
           })
           .map((i) => {
             return (
@@ -64,7 +63,7 @@ const CheckoutSummary = ({ cart }) => {
                   </div>
                 </div>
               </div>
-            );
+            )
           })}
       </div>
       <div className={styles.breakdown}>
@@ -94,7 +93,7 @@ const CheckoutSummary = ({ cart }) => {
     <div className={styles.spinnerContainer}>
       <PuffLoader />
     </div>
-  );
-};
+  )
+}
 
-export default CheckoutSummary;
+export default CheckoutSummary

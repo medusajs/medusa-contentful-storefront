@@ -1,16 +1,16 @@
-import React, { useContext } from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import React, { useContext } from "react"
+import { useStaticQuery, graphql } from "gatsby"
 
-import Link from "../link";
-import DisplayContext from "../../context/display-context";
-import StoreContext from "../../context/store-context";
-import { quantity, sum } from "../../utils/helper-functions";
-import { BiShoppingBag } from "react-icons/bi";
-import * as styles from "../../styles/nav-bar.module.css";
+import Link from "../link"
+import DisplayContext from "../../context/display-context"
+import StoreContext from "../../context/store-context"
+import { quantity, sum } from "../../utils/helper-functions"
+import { BiShoppingBag } from "react-icons/bi"
+import * as styles from "../../styles/nav-bar.module.css"
 
 const NavBar = ({ isCheckout }) => {
-  const { updateCartViewDisplay } = useContext(DisplayContext);
-  const { cart } = useContext(StoreContext);
+  const { updateCartViewDisplay } = useContext(DisplayContext)
+  const { cart } = useContext(StoreContext)
 
   const data = useStaticQuery(graphql`
     query HeaderQuery {
@@ -33,7 +33,7 @@ const NavBar = ({ isCheckout }) => {
         }
       }
     }
-  `);
+  `)
 
   return (
     <div className={styles.container}>
@@ -47,7 +47,7 @@ const NavBar = ({ isCheckout }) => {
               <Link key={item.id} className={styles.navItem} link={item.link}>
                 {item.title}
               </Link>
-            );
+            )
           })}
         </div>
       )}
@@ -60,7 +60,7 @@ const NavBar = ({ isCheckout }) => {
         </button>
       ) : null}
     </div>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar

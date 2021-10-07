@@ -27,10 +27,10 @@
 }
 
 .closeBtn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: none;
 }
 
 .breakdown {

@@ -24,7 +24,7 @@ Medusa is an open-source headless commerce engine that enables developers to cre
   </a>
 </p>
 
-> **Prerequisites**: This starter works with [`medusa-starter-contentful`](https://github.com/medusajs/medusa-starter-contentful). Make sure to have this starter installed and running. 
+> **Prerequisites**: This starter works with [`medusa-starter-contentful`](https://github.com/medusajs/medusa-starter-contentful). Make sure to have this starter installed and running.
 
 ## Quick start
 
@@ -32,15 +32,14 @@ Medusa is an open-source headless commerce engine that enables developers to cre
    ```shell
    gatsby new medusa-contentful-storefront https://github.com/medusajs/medusa-contentful-storefront/edit/master/README.md
    ```
-   
 2. **Setup your environment variables**
 
    ```shell
    mv .env.template .env
    ```
-   
+
    Go to your [Contentful space](https://app.contentful.com), then click **Settings** > **API Keys** > **Add API key**. Copy the value in the field "Content Delivery API - access token" and paste it into your `.env` together with your Contentful space id:
-   
+
    ```
    CONTENTFUL_SPACE_ID=*****
    CONTENTFUL_ACCESS_TOKEN=**************
@@ -66,12 +65,13 @@ Medusa is an open-source headless commerce engine that enables developers to cre
    - [GitHub](https://github.com/medusajs)
    - [Documentation](https://docs.medusa-commerce.com/)
 
-7. **Learn more about Contentful**
+6. **Learn more about Contentful**
+
    - [Website](https://contentful.com/)
    - [Documentation](https://www.contentful.com/developers/docs/)
    - [Migrations](https://www.contentful.com/developers/docs/tutorials/cli/scripting-migrations/)
 
-6. **Learn more about Gatsby**
+7. **Learn more about Gatsby**
 
    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
 
@@ -84,7 +84,6 @@ Medusa is an open-source headless commerce engine that enables developers to cre
    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
 
    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
 
 ## Thank you!
 

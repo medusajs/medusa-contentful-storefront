@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
-import DisplayContext from "../../context/display-context";
-import StoreContext from "../../context/store-context";
-import { Link, navigate } from "gatsby";
-import * as styles from "../../styles/cart-view.module.css";
-import { quantity, sum, formatPrice } from "../../utils/helper-functions";
+import React, { useContext } from "react"
+import DisplayContext from "../../context/display-context"
+import StoreContext from "../../context/store-context"
+import { Link, navigate } from "gatsby"
+import * as styles from "../../styles/cart-view.module.css"
+import { quantity, sum, formatPrice } from "../../utils/helper-functions"
 
 const CartView = () => {
   const { cartView, updateCartViewDisplay, updateCheckoutStep } =
-    useContext(DisplayContext);
+    useContext(DisplayContext)
   const { cart, currencyCode, updateLineItem, removeLineItem } =
-    useContext(StoreContext);
+    useContext(StoreContext)
 
   return (
     <div className={cartView ? styles.active : styles.cartContainer}>
@@ -32,11 +32,11 @@ const CartView = () => {
         {cart.items
           .sort((a, b) => {
             const createdAtA = new Date(a.created_at),
-              createdAtB = new Date(b.created_at);
+              createdAtB = new Date(b.created_at)
 
-            if (createdAtA < createdAtB) return -1;
-            if (createdAtA > createdAtB) return 1;
-            return 0;
+            if (createdAtA < createdAtB) return -1
+            if (createdAtA > createdAtB) return 1
+            return 0
           })
           .map((i) => {
             return (
@@ -98,7 +98,7 @@ const CartView = () => {
                   </button>
                 </div>
               </div>
-            );
+            )
           })}
       </div>
       <div className={styles.subtotal}>
@@ -111,9 +111,9 @@ const CartView = () => {
         <button
           className={styles.checkoutbtn}
           onClick={() => {
-            updateCheckoutStep(1);
-            updateCartViewDisplay();
-            navigate("/checkout");
+            updateCheckoutStep(1)
+            updateCartViewDisplay()
+            navigate("/checkout")
           }}
           disabled={cart.items.length < 1 ? true : false}
         >
@@ -121,7 +121,7 @@ const CartView = () => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CartView;
+export default CartView

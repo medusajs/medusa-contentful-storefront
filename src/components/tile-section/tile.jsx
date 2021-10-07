@@ -1,17 +1,17 @@
-import React from "react";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import React from "react"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-import Link from "../link";
-import * as styles from "../../styles/tile-section.module.css";
+import Link from "../link"
+import * as styles from "../../styles/tile-section.module.css"
 
 const Tile = ({ data }) => {
-  let title = data.title;
-  let cta = data.cta;
-  let img = data.image;
+  let title = data.title
+  let cta = data.cta
+  let img = data.image
 
   if (data.internal.type === "ContentfulProduct") {
-    title = data.title;
-    img = data.thumbnail;
+    title = data.title
+    img = data.thumbnail
   }
 
   return (
@@ -26,7 +26,7 @@ const Tile = ({ data }) => {
         {cta}
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default Tile;
+export default Tile

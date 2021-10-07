@@ -65,7 +65,7 @@
 }
 
 .card h2 {
-  margin: 0 0 .5rem 0;
+  margin: 0 0 0.5rem 0;
   font-size: 1.25rem;
 }
 
@@ -114,7 +114,6 @@
   height: 647px;
 }
 
-
 .links {
   display: flex;
   align-items: center;
@@ -131,7 +130,7 @@
   background: var(--logo-color-900);
   color: white;
   border-radius: 8px;
-  transition: background .2s ease-in;
+  transition: background 0.2s ease-in;
   font-weight: 500;
   border: none;
 }
@@ -192,33 +191,33 @@
 
 @-webkit-keyframes heartbeat {
   from {
-    -webkit-transform: scale(1.0);
-  } 
+    -webkit-transform: scale(1);
+  }
   20% {
-    -webkit-transform: scale(1.0);
+    -webkit-transform: scale(1);
   }
   50% {
-    -webkit-transform: scale(.90);
+    -webkit-transform: scale(0.9);
   }
   100% {
-    -webkit-transform: scale(1.0);
-}
+    -webkit-transform: scale(1);
+  }
 }
 @keyframes heartbeat {
   from {
-    -webkit-transform: scale(1.0);
-    transform: scale(1.0);
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
   20% {
-    -webkit-transform: scale(1.0);
-    transform: scale(1.0);
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
   50% {
-    -webkit-transform: scale(.90);
-    transform: scale(.90);
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
   }
   100% {
-    -webkit-transform: scale(1.0);
-    transform: scale(1.0);
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
 }

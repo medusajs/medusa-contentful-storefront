@@ -25,13 +25,13 @@
 }
 
 .edit {
-    background: transparent;
-    border: none;
-    transition: background .2s ease-in;
-    padding: .5rem 1rem;
-    border-radius: 4px;
+  background: transparent;
+  border: none;
+  transition: background 0.2s ease-in;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
 }
 
 .edit:hover {
-    background: var(--logo-color-100);
+  background: var(--logo-color-100);
 }

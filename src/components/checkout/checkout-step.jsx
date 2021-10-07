@@ -1,41 +1,41 @@
-import React, { useContext, useState } from "react";
-import DisplayContext from "../../context/display-context";
-import StoreContext from "../../context/store-context";
-import * as styles from "../../styles/checkout-step.module.css";
-import Link from "../link";
-import CheckoutSummary from "./checkout-summary";
-import InformationStep from "./information-step";
-import PaymentStep from "./payment-step";
-import ShippingStep from "./shipping-step";
-import StepOverview from "./step-overview";
+import React, { useContext, useState } from "react"
+import DisplayContext from "../../context/display-context"
+import StoreContext from "../../context/store-context"
+import * as styles from "../../styles/checkout-step.module.css"
+import Link from "../link"
+import CheckoutSummary from "./checkout-summary"
+import InformationStep from "./information-step"
+import PaymentStep from "./payment-step"
+import ShippingStep from "./shipping-step"
+import StepOverview from "./step-overview"
 
 const CheckoutStep = () => {
   const { checkoutStep, updateCheckoutStep, updateOrderSummaryDisplay } =
-    useContext(DisplayContext);
-  const { cart, updateAddress, setShippingMethod } = useContext(StoreContext);
+    useContext(DisplayContext)
+  const { cart, updateAddress, setShippingMethod } = useContext(StoreContext)
 
-  const [isProcessingInfo, setIsProcessingInfo] = useState(false);
-  const [isProcessingShipping, setIsProcessingShipping] = useState(false);
+  const [isProcessingInfo, setIsProcessingInfo] = useState(false)
+  const [isProcessingShipping, setIsProcessingShipping] = useState(false)
 
   const handleShippingSubmit = async (address, email) => {
-    setIsProcessingInfo(true);
+    setIsProcessingInfo(true)
 
-    await updateAddress(address, email);
+    await updateAddress(address, email)
 
-    setIsProcessingInfo(false);
-    updateCheckoutStep(2);
-  };
+    setIsProcessingInfo(false)
+    updateCheckoutStep(2)
+  }
 
   const handleDeliverySubmit = async (option) => {
-    setIsProcessingShipping(true);
+    setIsProcessingShipping(true)
     await setShippingMethod(option.id)
       .then(() => {
-        updateCheckoutStep(3);
+        updateCheckoutStep(3)
       })
       .finally(() => {
-        setIsProcessingShipping(false);
-      });
-  };
+        setIsProcessingShipping(false)
+      })
+  }
 
   const handleStep = () => {
     switch (checkoutStep) {
@@ -52,7 +52,7 @@ const CheckoutStep = () => {
               handleShippingSubmit(submittedAddr, submittedEmail)
             }
           />
-        );
+        )
       case 2:
         return (
           <ShippingStep
@@ -61,13 +61,13 @@ const CheckoutStep = () => {
             handleDeliverySubmit={handleDeliverySubmit}
             savedMethods={cart.shipping_methods}
           />
-        );
+        )
       case 3:
-        return <PaymentStep />;
+        return <PaymentStep />
       default:
-        return null;
+        return null
     }
-  };
+  }
 
   return (
     <div className={styles.container}>
@@ -99,7 +99,7 @@ const CheckoutStep = () => {
         <CheckoutSummary cart={cart} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CheckoutStep;
+export default CheckoutStep

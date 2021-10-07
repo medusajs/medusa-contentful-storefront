@@ -1,7 +1,7 @@
-import React from "react";
+import React from "react"
 
-import * as styles from "../../styles/tile-section.module.css";
-import Tile from "./tile";
+import * as styles from "../../styles/tile-section.module.css"
+import Tile from "./tile"
 
 const TileSection = ({ data }) => {
   return (
@@ -13,7 +13,7 @@ const TileSection = ({ data }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TileSection;
+export default TileSection

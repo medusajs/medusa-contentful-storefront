@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import StoreContext from "../context/store-context";
-import * as itemStyles from "../styles/cart-view.module.css";
-import * as styles from "../styles/payment.module.css";
-import { Link } from "gatsby";
-import { formatPrice } from "../utils/helper-functions";
+import React, { useContext, useEffect, useState } from "react"
+import StoreContext from "../context/store-context"
+import * as itemStyles from "../styles/cart-view.module.css"
+import * as styles from "../styles/payment.module.css"
+import { Link } from "gatsby"
+import { formatPrice } from "../utils/helper-functions"
 
 const style = {
   height: "100vh",
@@ -13,20 +13,20 @@ const style = {
   justifyContent: "center",
   alignItems: "center",
   textAlign: "center",
-};
+}
 
 const Payment = () => {
-  const [order, setOrder] = useState();
-  const { cart, completeCart, createCart } = useContext(StoreContext);
+  const [order, setOrder] = useState()
+  const { cart, completeCart, createCart } = useContext(StoreContext)
 
   useEffect(() => {
     if (cart.items.length > 0) {
       completeCart().then((order) => {
-        setOrder(order);
-        createCart();
-      });
+        setOrder(order)
+        createCart()
+      })
     }
-  }, [cart, completeCart, createCart]);
+  }, [cart, completeCart, createCart])
 
   return !order ? (
     <div style={style}>
@@ -42,11 +42,11 @@ const Payment = () => {
         {order.items
           .sort((a, b) => {
             const createdAtA = new Date(a.created_at),
-              createdAtB = new Date(b.created_at);
+              createdAtB = new Date(b.created_at)
 
-            if (createdAtA < createdAtB) return -1;
-            if (createdAtA > createdAtB) return 1;
-            return 0;
+            if (createdAtA < createdAtB) return -1
+            if (createdAtA > createdAtB) return 1
+            return 0
           })
           .map((i) => {
             return (
@@ -79,7 +79,7 @@ const Payment = () => {
                   </div>
                 </div>
               </div>
-            );
+            )
           })}
       </div>
       <div>
@@ -102,7 +102,7 @@ const Payment = () => {
         <p>An order comfirmation will be sent to you at {order.email}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Payment;
+export default Payment

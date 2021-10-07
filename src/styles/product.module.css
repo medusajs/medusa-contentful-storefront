@@ -111,29 +111,29 @@
 }
 
 .tabtitle {
-    background: transparent;
-    border: none;
-    padding: .5rem 0;
-    font-size: var(--fz-m);
-    border-bottom: 1px solid var(--logo-color-400); 
+  background: transparent;
+  border: none;
+  padding: 0.5rem 0;
+  font-size: var(--fz-m);
+  border-bottom: 1px solid var(--logo-color-400);
 }
 
 @media (max-width: 876px) {
-    .container {
-      flex-direction: column;
-    }
-
-    .image,
-    .info {
-        width: 100%
-    }
-
-    .image {
-        height: 50vh;
-    }
-
-    .info {
-        margin-top: 1rem;
-        padding: 0 22px;
-    }
+  .container {
+    flex-direction: column;
   }
+
+  .image,
+  .info {
+    width: 100%;
+  }
+
+  .image {
+    height: 50vh;
+  }
+
+  .info {
+    margin-top: 1rem;
+    padding: 0 22px;
+  }
+}

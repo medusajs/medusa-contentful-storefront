@@ -1,7 +1,7 @@
-import React from "react";
-import { Field } from "formik";
-import * as styles from "../../styles/input-field.module.css";
-import { MdError } from "react-icons/md";
+import React from "react"
+import { Field } from "formik"
+import * as styles from "../../styles/input-field.module.css"
+import { MdError } from "react-icons/md"
 
 const InputField = ({ id, placeholder, error, errorMsg, type, disabled }) => {
   return (
@@ -27,7 +27,7 @@ const InputField = ({ id, placeholder, error, errorMsg, type, disabled }) => {
         {error && <MdError className={styles.erroricon} />}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default InputField;
+export default InputField

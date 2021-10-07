@@ -1,7 +1,7 @@
-require("dotenv").config();
+require("dotenv").config()
 
-const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID || "";
-const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN || "";
+const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID || ""
+const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN || ""
 
 module.exports = {
   siteMetadata: {
@@ -34,4 +34,4 @@ module.exports = {
       },
     },
   ],
-};
+}

@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
-import { Form, Formik } from "formik";
-import * as Yup from "yup";
-import PuffLoader from "react-spinners/PuffLoader";
-import * as styles from "../../styles/information-step.module.css";
-import InputField from "./input-field";
-import StoreContext from "../../context/store-context";
-import SelectField from "./select-field";
+import React, { useContext } from "react"
+import { Form, Formik } from "formik"
+import * as Yup from "yup"
+import PuffLoader from "react-spinners/PuffLoader"
+import * as styles from "../../styles/information-step.module.css"
+import InputField from "./input-field"
+import StoreContext from "../../context/store-context"
+import SelectField from "./select-field"
 
 const InformationStep = ({ handleSubmit, savedValues, isProcessing }) => {
-  const { cart } = useContext(StoreContext);
+  const { cart } = useContext(StoreContext)
   let Schema = Yup.object().shape({
     first_name: Yup.string()
       .min(2, "Too short")
@@ -28,7 +28,7 @@ const InformationStep = ({ handleSubmit, savedValues, isProcessing }) => {
     postal_code: Yup.string().required("Required"),
     province: Yup.string().nullable(true),
     phone: Yup.string().required("Required"),
-  });
+  })
 
   return (
     <div style={{ flexGrow: "1" }}>
@@ -47,8 +47,8 @@ const InformationStep = ({ handleSubmit, savedValues, isProcessing }) => {
         }}
         validationSchema={Schema}
         onSubmit={(values) => {
-          const { email, ...rest } = values;
-          handleSubmit(rest, email);
+          const { email, ...rest } = values
+          handleSubmit(rest, email)
         }}
       >
         {({ errors, touched, values }) => (
@@ -137,7 +137,7 @@ const InformationStep = ({ handleSubmit, savedValues, isProcessing }) => {
         )}
       </Formik>
     </div>
-  );
-};
+  )
+}
 
-export default InformationStep;
+export default InformationStep

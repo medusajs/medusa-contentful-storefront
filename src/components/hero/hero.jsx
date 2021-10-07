@@ -1,8 +1,8 @@
-import React from "react";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import React from "react"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-import Link from "../link";
-import * as styles from "../../styles/hero.module.css";
+import Link from "../link"
+import * as styles from "../../styles/hero.module.css"
 
 const Hero = ({ data }) => {
   return (
@@ -34,6 +34,6 @@ const Hero = ({ data }) => {
         </div>
       </div>
     </div>
-  );
-};
-export default Hero;
+  )
+}
+export default Hero

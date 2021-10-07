@@ -1,29 +1,29 @@
-import React, { useContext, useState } from "react";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { navigate } from "gatsby";
-import DisplayContext from "../../context/display-context";
-import * as styles from "../../styles/injectable-payment-card.module.css";
-import { BiLeftArrowAlt } from "react-icons/bi";
+import React, { useContext, useState } from "react"
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js"
+import { navigate } from "gatsby"
+import DisplayContext from "../../context/display-context"
+import * as styles from "../../styles/injectable-payment-card.module.css"
+import { BiLeftArrowAlt } from "react-icons/bi"
 
 const InjectablePaymentCard = ({ session, onSetPaymentSession }) => {
-  const stripe = useStripe();
-  const elements = useElements();
-  const [succeeded, setSucceeded] = useState(false);
-  const [error, setError] = useState(null);
-  const [processing, setProcessing] = useState("");
-  const [disabled, setDisabled] = useState(true);
-  const { updateCheckoutStep } = useContext(DisplayContext);
+  const stripe = useStripe()
+  const elements = useElements()
+  const [succeeded, setSucceeded] = useState(false)
+  const [error, setError] = useState(null)
+  const [processing, setProcessing] = useState("")
+  const [disabled, setDisabled] = useState(true)
+  const { updateCheckoutStep } = useContext(DisplayContext)
 
   const handleChange = async (event) => {
-    setDisabled(event.empty);
-    setError(event.error ? event.error.message : "");
-  };
+    setDisabled(event.empty)
+    setError(event.error ? event.error.message : "")
+  }
 
   const handleSubmit = async (ev) => {
-    ev.preventDefault();
-    setProcessing(true);
+    ev.preventDefault()
+    setProcessing(true)
 
-    await onSetPaymentSession();
+    await onSetPaymentSession()
 
     const payload = await stripe.confirmCardPayment(
       session.data.client_secret,
@@ -32,17 +32,17 @@ const InjectablePaymentCard = ({ session, onSetPaymentSession }) => {
           card: elements.getElement(CardElement),
         },
       }
-    );
+    )
     if (payload.error) {
-      setError(`${payload.error.message}`);
-      setProcessing(false);
+      setError(`${payload.error.message}`)
+      setProcessing(false)
     } else {
-      setError(null);
-      setProcessing(false);
-      setSucceeded(true);
-      navigate(`/payment`);
+      setError(null)
+      setProcessing(false)
+      setSucceeded(true)
+      navigate(`/payment`)
     }
-  };
+  }
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
@@ -73,7 +73,7 @@ const InjectablePaymentCard = ({ session, onSetPaymentSession }) => {
         </button>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default InjectablePaymentCard;
+export default InjectablePaymentCard

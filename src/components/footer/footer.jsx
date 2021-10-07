@@ -1,7 +1,7 @@
-import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 
-import * as styles from "../../styles/footer.module.css";
+import * as styles from "../../styles/footer.module.css"
 
 const Footer = () => {
   const data = useStaticQuery(graphql`
@@ -16,7 +16,7 @@ const Footer = () => {
         }
       }
     }
-  `);
+  `)
 
   return (
     <div className={styles.container}>
@@ -25,10 +25,10 @@ const Footer = () => {
           <a key={ni.id} className={styles.navItem} href={ni.link.linkTo}>
             {ni.title}
           </a>
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

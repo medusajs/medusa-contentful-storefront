@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import DisplayContext from "../../context/display-context";
-import * as styles from "../../styles/blur.module.css";
+import React, { useContext } from "react"
+import DisplayContext from "../../context/display-context"
+import * as styles from "../../styles/blur.module.css"
 
 const Blur = () => {
-  const { cartView, updateCartViewDisplay } = useContext(DisplayContext);
+  const { cartView, updateCartViewDisplay } = useContext(DisplayContext)
   return (
     <div
       className={`${styles.blur} ${cartView ? styles.active : null}`}
@@ -13,7 +13,7 @@ const Blur = () => {
       tabIndex="-1"
       aria-label="Close cart view"
     />
-  );
-};
+  )
+}
 
-export default Blur;
+export default Blur

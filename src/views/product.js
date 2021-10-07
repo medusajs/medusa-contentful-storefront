@@ -1,38 +1,38 @@
-import React, { useCallback, useEffect, useState, useContext } from "react";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { BiShoppingBag } from "react-icons/bi";
+import React, { useCallback, useEffect, useState, useContext } from "react"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { BiShoppingBag } from "react-icons/bi"
 
-import SEO from "../components/seo";
-import StoreContext from "../context/store-context";
-import { formatPrice, resetOptions } from "../utils/helper-functions";
-import { createClient } from "../utils/client";
-import * as styles from "../styles/product.module.css";
+import SEO from "../components/seo"
+import StoreContext from "../context/store-context"
+import { formatPrice, resetOptions } from "../utils/helper-functions"
+import { createClient } from "../utils/client"
+import * as styles from "../styles/product.module.css"
 
 const Product = ({ product }) => {
-  const { cart, addVariantToCart } = useContext(StoreContext);
+  const { cart, addVariantToCart } = useContext(StoreContext)
   const [options, setOptions] = useState({
     variantId: "",
     quantity: 0,
     size: "",
-  });
+  })
 
-  const [productStatus, setProductStatus] = useState(undefined);
-  const client = createClient();
+  const [productStatus, setProductStatus] = useState(undefined)
+  const client = createClient()
 
   useEffect(() => {
     const getProduct = async () => {
-      const response = await client.products.retrieve(product.medusaId);
-      setProductStatus(response.data.product);
-    };
+      const response = await client.products.retrieve(product.medusaId)
+      setProductStatus(response.data.product)
+    }
 
-    getProduct();
-  }, [product.medusaId]);
+    getProduct()
+  }, [product.medusaId])
 
   useEffect(() => {
     if (product) {
-      setOptions(resetOptions(product));
+      setOptions(resetOptions(product))
     }
-  }, [product]);
+  }, [product])
 
   const handleQtyChange = (action) => {
     if (action === "inc") {
@@ -45,7 +45,7 @@ const Product = ({ product }) => {
           variantId: options.variantId,
           quantity: options.quantity + 1,
           size: options.size,
-        });
+        })
     }
     if (action === "dec") {
       if (options.quantity > 1)
@@ -53,33 +53,33 @@ const Product = ({ product }) => {
           variantId: options.variantId,
           quantity: options.quantity - 1,
           size: options.size,
-        });
+        })
     }
-  };
+  }
 
   const handleAddToBag = () => {
     addVariantToCart({
       variantId: options.variantId,
       quantity: options.quantity,
-    });
-    if (product) setOptions(resetOptions(product));
-  };
+    })
+    if (product) setOptions(resetOptions(product))
+  }
 
   const renderPrice = useCallback(
     (variant) => {
-      if (!cart.id) return;
-      if (!variant) return;
+      if (!cart.id) return
+      if (!variant) return
 
-      const region = cart.region;
-      const currency = region.currency_code;
+      const region = cart.region
+      const currency = region.currency_code
 
       const price = variant.prices.find(
         (ma) => ma.currency_code.toLowerCase() === currency.toLowerCase()
-      );
-      return formatPrice(price.amount, price.currency_code);
+      )
+      return formatPrice(price.amount, price.currency_code)
     },
     [cart]
-  );
+  )
 
   return (
     <div className={styles.container}>
@@ -131,7 +131,7 @@ const Product = ({ product }) => {
                     >
                       {v.title}
                     </button>
-                  );
+                  )
                 })}
             </div>
           </div>
@@ -168,7 +168,7 @@ const Product = ({ product }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Product;
+export default Product

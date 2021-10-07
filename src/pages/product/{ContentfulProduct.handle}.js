@@ -1,13 +1,13 @@
-import React from "react";
-import { graphql } from "gatsby";
+import React from "react"
+import { graphql } from "gatsby"
 
-import Product from "../../views/product";
+import Product from "../../views/product"
 
 const ProductPage = ({ data }) => {
-  return <Product product={data.product} />;
-};
+  return <Product product={data.product} />
+}
 
-export default ProductPage;
+export default ProductPage
 
 export const query = graphql`
   query ($id: String!) {
@@ -39,4 +39,4 @@ export const query = graphql`
       }
     }
   }
-`;
+`

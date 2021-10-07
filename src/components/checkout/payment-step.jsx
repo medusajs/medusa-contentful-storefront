@@ -1,24 +1,24 @@
-import React, { useEffect, useContext } from "react";
-import { navigate } from "gatsby";
-import { Elements } from "@stripe/react-stripe-js";
-import StoreContext from "../../context/store-context";
-import InjectablePaymentCard from "./injectable-payment-card";
-import * as styles from "../../styles/injectable-payment-card.module.css";
-import getStripe from "../../utils/stripe";
+import React, { useEffect, useContext } from "react"
+import { navigate } from "gatsby"
+import { Elements } from "@stripe/react-stripe-js"
+import StoreContext from "../../context/store-context"
+import InjectablePaymentCard from "./injectable-payment-card"
+import * as styles from "../../styles/injectable-payment-card.module.css"
+import getStripe from "../../utils/stripe"
 
 const PaymentStep = () => {
   const { cart, createPaymentSession, setPaymentSession } =
-    useContext(StoreContext);
+    useContext(StoreContext)
 
   useEffect(() => {
-    createPaymentSession();
-  }, []);
+    createPaymentSession()
+  }, [])
 
   const handlePayment = async () => {
     await setPaymentSession("manual").then(() => {
-      navigate(`/payment`);
-    });
-  };
+      navigate(`/payment`)
+    })
+  }
 
   return (
     <div style={{ flexGrow: "1" }}>
@@ -35,7 +35,7 @@ const PaymentStep = () => {
                     onSetPaymentSession={() => setPaymentSession("stripe")}
                   />
                 </Elements>
-              );
+              )
             case "manual":
               return (
                 <div key={"manual"}>
@@ -48,13 +48,13 @@ const PaymentStep = () => {
                     <span id="button-text">Pay</span>
                   </button>
                 </div>
-              );
+              )
             default:
-              return null;
+              return null
           }
         })}
     </div>
-  );
-};
+  )
+}
 
-export default PaymentStep;
+export default PaymentStep
