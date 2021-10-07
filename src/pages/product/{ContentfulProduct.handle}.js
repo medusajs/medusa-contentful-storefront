@@ -37,6 +37,45 @@ export const query = graphql`
           value
         }
       }
+      contentModules {
+        ... on ContentfulTileSection {
+          id
+          title
+          tiles {
+            ... on ContentfulProduct {
+              id
+              title
+              handle
+              thumbnail {
+                gatsbyImageData
+              }
+              internal {
+                type
+              }
+            }
+            ... on ContentfulTile {
+              id
+              title
+              cta
+              image {
+                gatsbyImageData
+              }
+              link {
+                linkTo
+                reference {
+                  slug
+                }
+              }
+              internal {
+                type
+              }
+            }
+          }
+          internal {
+            type
+          }
+        }
+      }
     }
   }
 `

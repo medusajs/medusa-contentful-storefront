@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import SEO from "../components/seo"
+import RichText from "../components/rich-text/rich-text"
 import Hero from "../components/hero/hero"
 import TileSection from "../components/tile-section/tile-section"
 import * as styles from "../styles/home.module.css"
@@ -21,6 +22,8 @@ const Page = ({ data }) => {
               return <Hero key={cm.id} data={cm} />
             case "ContentfulTileSection":
               return <TileSection key={cm.id} data={cm} />
+            case "ContentfulRichText":
+              return <RichText key={cm.id} data={cm} />
             default:
               return null
           }
@@ -38,6 +41,15 @@ export const query = graphql`
         metaDescription
       }
       contentModules {
+        ... on ContentfulRichText {
+          id
+          body {
+            raw
+          }
+          internal {
+            type
+          }
+        }
         ... on ContentfulHero {
           id
           backgroundImage {

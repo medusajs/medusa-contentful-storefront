@@ -3,6 +3,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { BiShoppingBag } from "react-icons/bi"
 
 import SEO from "../components/seo"
+import TileSection from "../components/tile-section/tile-section"
 import StoreContext from "../context/store-context"
 import { formatPrice, resetOptions } from "../utils/helper-functions"
 import { createClient } from "../utils/client"
@@ -168,6 +169,16 @@ const Product = ({ product }) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className={styles.contentModules}>
+        {product.contentModules?.map((cm) => {
+          switch (cm.internal.type) {
+            case "ContentfulTileSection":
+              return <TileSection key={cm.id} data={cm} />
+            default:
+              return null
+          }
+        })}
       </div>
     </div>
   )
