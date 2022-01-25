@@ -1,0 +1,66 @@
+:root {
+  --brand-green: #56fbb1;
+  --brand-deep-blue: #0a3149;
+  --brand-cool-grey: #eef0f5;
+
+  --ui-100: #89959c;
+  --ui-75: #d9dfe8;
+  --ui-50: #eef0f5;
+  --ui-25: #f7f7fa;
+
+  --logo-color-1000: #30363d;
+  --logo-color-900: #454b54;
+  --logo-color-400: #a3b1c7;
+  --logo-color-100: #454b5411;
+
+  --bg: #f7f9f9;
+
+  /* Font sizes */
+  --fz-s: 12px;
+  --fz-sm: 14px;
+  --fz-m: 16px;
+  --fz-ml: 18px;
+  --fz-l: 22px;
+  --fz-xl: 24px;
+
+  /* box-shadow */
+  --shade: 0 1px 5px rgba(0, 0, 0, 0.2);
+
+  /* Nav */
+  --nav-height: 68px;
+
+  --z-index-high: 100;
+  --z-index-mid: 75;
+  --z-index-low: 50;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: ES Rebond Grotesque, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled,
+button:disabled:hover {
+  cursor: not-allowed;
+  background: lightgrey;
+  color: black;
+}
+
+* {
+  box-sizing: border-box;
+}

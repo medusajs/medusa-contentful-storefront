@@ -1,0 +1,28 @@
+.hero {
+  color: white;
+  position: relative;
+  text-align: left;
+  width: 100%;
+  height: 647px;
+}
+
+.button {
+  outline: 0;
+  border: none;
+
+  /* Auto Layout */
+  padding: 8px 24px;
+
+  background: var(--brand-green);
+  border-radius: 30px;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: var(--brand-deep-blue);
+}

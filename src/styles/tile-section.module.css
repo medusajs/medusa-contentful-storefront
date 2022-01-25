@@ -1,0 +1,29 @@
+.tile-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 64px 59px;
+}
+
+.tile-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+}
+
+.tile:not(:last-of-type) {
+  margin-right: 16px;
+}
+
+.tile-body .tile-title {
+  margin-bottom: 8px;
+}
+
+.tile-body .tile-cta {
+  color: var(--brand-green);
+}
