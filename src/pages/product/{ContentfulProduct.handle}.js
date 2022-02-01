@@ -1,6 +1,5 @@
-import React from "react"
 import { graphql } from "gatsby"
-
+import React from "react"
 import Product from "../../views/product"
 
 const ProductPage = ({ data }) => {
