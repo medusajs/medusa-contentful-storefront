@@ -1,8 +1,10 @@
-import React, { useContext, useEffect, useState } from "react"
-import StoreContext from "../context/store-context"
 import * as itemStyles from "../styles/cart-view.module.css"
 import * as styles from "../styles/payment.module.css"
+
+import React, { useContext, useEffect, useState } from "react"
+
 import { Link } from "gatsby"
+import StoreContext from "../context/store-context"
 import { formatPrice } from "../utils/helper-functions"
 
 const style = {
@@ -54,7 +56,7 @@ const Payment = () => {
                 <div className={itemStyles.product}>
                   <figure>
                     <Link to={`/product/${i.variant.product.id}`}>
-                      {/* Replace with a product thumbnail/image */}
+                      <img src={i.thumbnail} alt={i.title} />
                       <div className={itemStyles.placeholder} />
                     </Link>
                   </figure>
