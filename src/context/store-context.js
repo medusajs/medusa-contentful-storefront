@@ -1,4 +1,5 @@
-import React, { useReducer, useEffect, useRef } from "react"
+import React, { useEffect, useReducer, useRef } from "react"
+
 import { createClient } from "../utils/client"
 
 export const defaultStoreContext = {
@@ -33,6 +34,7 @@ export default StoreContext
 const reducer = (state, action) => {
   switch (action.type) {
     case "setCart":
+      console.log(action.payload)
       return {
         ...state,
         cart: action.payload,
@@ -70,20 +72,20 @@ export const StoreProvider = ({ children }) => {
     }
 
     if (cartId) {
-      client.carts.retrieve(cartId).then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart })
+      client.carts.retrieve(cartId).then(({ cart }) => {
+        dispatch({ type: "setCart", payload: cart })
       })
     } else {
-      client.carts.create(cartId).then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart })
+      client.carts.create({}).then(({cart}) => {
+        dispatch({ type: "setCart", payload: cart })
         if (localStorage) {
-          localStorage.setItem("cart_id", data.cart.id)
+          localStorage.setItem("cart_id", cart.id)
         }
       })
     }
 
-    client.products.list().then(({ data }) => {
-      dispatch({ type: "setProducts", payload: data.products })
+    client.products.list().then(({ products }) => {
+      dispatch({ type: "setProducts", payload: products })
     })
   }, [])
 
@@ -91,8 +93,8 @@ export const StoreProvider = ({ children }) => {
     if (localStorage) {
       localStorage.removeItem("cart_id")
     }
-    client.carts.create().then(({ data }) => {
-      dispatch({ type: "setCart", payload: data.cart })
+    client.carts.create({}).then(({ cart }) => {
+      dispatch({ type: "setCart", payload: cart })
     })
   }
 
@@ -101,9 +103,9 @@ export const StoreProvider = ({ children }) => {
       .setPaymentSession(state.cart.id, {
         provider_id: provider,
       })
-      .then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart })
-        return data
+      .then(({ cart }) => {
+        dispatch({ type: "setCart", payload: cart })
+        return cart
       })
   }
 
@@ -113,32 +115,32 @@ export const StoreProvider = ({ children }) => {
         variant_id: variantId,
         quantity: quantity,
       })
-      .then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart })
+      .then(({ cart }) => {
+        dispatch({ type: "setCart", payload: cart })
       })
   }
 
   const removeLineItem = async (lineId) => {
-    client.carts.lineItems.delete(state.cart.id, lineId).then(({ data }) => {
-      dispatch({ type: "setCart", payload: data.cart })
+    client.carts.lineItems.delete(state.cart.id, lineId).then(({ cart }) => {
+      dispatch({ type: "setCart", payload: cart })
     })
   }
 
   const updateLineItem = async ({ lineId, quantity }) => {
     client.carts.lineItems
       .update(state.cart.id, lineId, { quantity: quantity })
-      .then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart })
+      .then(({ cart }) => {
+        dispatch({ type: "setCart", payload: cart })
       })
   }
 
   const getShippingOptions = async () => {
-    const data = await client.shippingOptions
-      .list(state.cart.id)
-      .then(({ data }) => data)
+    const shipping_options = await client.shippingOptions
+      .list()
+      .then(({ shipping_options }) => shipping_options)
 
-    if (data) {
-      return data.shipping_options
+    if (shipping_options) {
+      return shipping_options
     } else {
       return undefined
     }
@@ -149,38 +151,38 @@ export const StoreProvider = ({ children }) => {
       .addShippingMethod(state.cart.id, {
         option_id: id,
       })
-      .then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart })
-        return data
+      .then(({ cart }) => {
+        dispatch({ type: "setCart", payload: cart })
+        return cart
       })
   }
 
   const createPaymentSession = async () => {
     return await client.carts
       .createPaymentSessions(state.cart.id)
-      .then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart })
-        return data
+      .then(({ cart }) => {
+        dispatch({ type: "setCart", payload: cart })
+        return cart
       })
   }
 
   const completeCart = async () => {
     const data = await client.carts
       .complete(state.cart.id)
-      .then(({ data }) => data)
+      .then(({data}) => data)
 
     if (data) {
-      return data.data
+      return data
     } else {
       return undefined
     }
   }
 
   const retrieveOrder = async (orderId) => {
-    const data = await client.orders.retrieve(orderId).then(({ data }) => data)
+    const order = await client.orders.retrieve(orderId).then(({order}) => order)
 
-    if (data) {
-      return data.order
+    if (order) {
+      return order
     } else {
       return undefined
     }
@@ -193,8 +195,8 @@ export const StoreProvider = ({ children }) => {
         billing_address: address,
         email: email,
       })
-      .then(({ data }) => {
-        dispatch({ type: "setCart", payload: data.cart })
+      .then(({ cart }) => {
+        dispatch({ type: "setCart", payload: cart })
       })
   }
 

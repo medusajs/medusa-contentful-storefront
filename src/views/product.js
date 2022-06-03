@@ -1,12 +1,13 @@
-import React, { useCallback, useEffect, useState, useContext } from "react"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { BiShoppingBag } from "react-icons/bi"
+import * as styles from "../styles/product.module.css"
 
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import React, { useCallback, useContext, useEffect, useState } from "react"
+import { formatPrice, resetOptions } from "../utils/helper-functions"
+
+import { BiShoppingBag } from "react-icons/bi"
 import SEO from "../components/seo"
 import StoreContext from "../context/store-context"
-import { formatPrice, resetOptions } from "../utils/helper-functions"
 import { createClient } from "../utils/client"
-import * as styles from "../styles/product.module.css"
 
 const Product = ({ product }) => {
   const { cart, addVariantToCart } = useContext(StoreContext)
@@ -22,7 +23,7 @@ const Product = ({ product }) => {
   useEffect(() => {
     const getProduct = async () => {
       const response = await client.products.retrieve(product.medusaId)
-      setProductStatus(response.data.product)
+      setProductStatus(response.product)
     }
 
     getProduct()
