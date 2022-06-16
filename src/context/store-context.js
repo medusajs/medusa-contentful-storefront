@@ -75,7 +75,7 @@ export const StoreProvider = ({ children }) => {
         dispatch({ type: "setCart", payload: cart })
       })
     } else {
-      client.carts.create({}).then(({cart}) => {
+      client.carts.create({}).then(({ cart }) => {
         dispatch({ type: "setCart", payload: cart })
         if (localStorage) {
           localStorage.setItem("cart_id", cart.id)
@@ -178,7 +178,7 @@ export const StoreProvider = ({ children }) => {
   }
 
   const retrieveOrder = async (orderId) => {
-    const order = await client.orders.retrieve(orderId).then(({order}) => order)
+    const order = await client.orders.retrieve(orderId).then(({ order }) => order)
 
     if (order) {
       return order
