@@ -13,8 +13,6 @@ const CartView = () => {
   const { cart, currencyCode, updateLineItem, removeLineItem } =
     useContext(StoreContext)
 
-    console.log(cart)
-
   return (
     <div className={cartView ? styles.active : styles.cartContainer}>
       <div className={styles.top}>

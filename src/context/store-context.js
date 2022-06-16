@@ -34,7 +34,6 @@ export default StoreContext
 const reducer = (state, action) => {
   switch (action.type) {
     case "setCart":
-      console.log(action.payload)
       return {
         ...state,
         cart: action.payload,
@@ -169,7 +168,7 @@ export const StoreProvider = ({ children }) => {
   const completeCart = async () => {
     const data = await client.carts
       .complete(state.cart.id)
-      .then(({data}) => data)
+      .then(({ data }) => data)
 
     if (data) {
       return data
