@@ -1,9 +1,11 @@
+import * as styles from "../../styles/cart-view.module.css"
+
+import { Link, navigate } from "gatsby"
 import React, { useContext } from "react"
+import { formatPrice, quantity, sum } from "../../utils/helper-functions"
+
 import DisplayContext from "../../context/display-context"
 import StoreContext from "../../context/store-context"
-import { Link, navigate } from "gatsby"
-import * as styles from "../../styles/cart-view.module.css"
-import { quantity, sum, formatPrice } from "../../utils/helper-functions"
 
 const CartView = () => {
   const { cartView, updateCartViewDisplay, updateCheckoutStep } =
@@ -43,7 +45,7 @@ const CartView = () => {
               <div key={i.id} className={styles.product}>
                 <figure>
                   <Link to={`/product/${i.variant.product.id}`}>
-                    {/* Replace with a product thumbnail/image */}
+                    <img src={i.thumbnail} alt={i.title} />
                     <div className={styles.placeholder} />
                   </Link>
                 </figure>

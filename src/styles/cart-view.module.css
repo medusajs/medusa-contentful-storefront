@@ -100,11 +100,16 @@
 }
 
 .product figure {
-  background: var(--bg);
   width: 126px;
   height: 189px;
   margin: 0;
   margin-right: 1rem;
+}
+
+.product figure img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .placeholder {

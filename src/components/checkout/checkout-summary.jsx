@@ -1,11 +1,13 @@
-import React, { useContext } from "react"
-import { PuffLoader } from "react-spinners"
-import * as styles from "../../styles/checkout-summary.module.css"
 import * as itemStyles from "../../styles/cart-view.module.css"
-import { Link } from "gatsby"
-import { formatPrice } from "../../utils/helper-functions"
-import { sum, quantity } from "../../utils/helper-functions"
+import * as styles from "../../styles/checkout-summary.module.css"
+
+import React, { useContext } from "react"
+import { quantity, sum } from "../../utils/helper-functions"
+
 import DisplayContext from "../../context/display-context"
+import { Link } from "gatsby"
+import { PuffLoader } from "react-spinners"
+import { formatPrice } from "../../utils/helper-functions"
 
 const CheckoutSummary = ({ cart }) => {
   const { orderSummary, updateOrderSummaryDisplay } = useContext(DisplayContext)
@@ -43,7 +45,7 @@ const CheckoutSummary = ({ cart }) => {
               <div key={i.id} className={itemStyles.product}>
                 <figure>
                   <Link to={`/product/${i.variant.product.id}`}>
-                    {/* Replace with a product thumbnail/image */}
+                    <img src={i.thumbnail} alt={i.title} />
                     <div className={itemStyles.placeholder} />
                   </Link>
                 </figure>
