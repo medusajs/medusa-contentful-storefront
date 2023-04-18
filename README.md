@@ -24,6 +24,8 @@ Medusa is an open-source headless commerce engine that enables developers to cre
   </a>
 </p>
 
+> :warning: **This storefront is deprecated and may not work with the latest versions of Medusa. It's recommended to integrate Contentful in your storefront manually.**
+
 > **Prerequisites**: This starter works with [`medusa-starter-contentful`](https://github.com/medusajs/medusa-starter-contentful). Make sure to have this starter installed and running.
 
 ## Quick start
