@@ -32,7 +32,7 @@ Medusa is an open-source headless commerce engine that enables developers to cre
 
 1. **Install the storefront**
    ```shell
-   gatsby new medusa-contentful-storefront https://github.com/medusajs/medusa-contentful-storefront/edit/master/README.md
+   gatsby new medusa-contentful-storefront https://github.com/medusajs/medusa-contentful-storefront
    ```
 2. **Setup your environment variables**
 
